@@ -23,7 +23,8 @@ set colorcolumn=80
 set splitbelow
 set splitright
 set signcolumn=yes
-highlight Normal guibg=none ctermbg=NONE
+set cursorline
+highlight Normal guibg=black ctermbg=NONE
 
 " ---- Installing Pluggins ---- "
 call plug#begin('~/.vim/plugged')
@@ -129,6 +130,9 @@ colorscheme codedark
 
 hi Error ctermfg=Red guifg=Red
 hi ColorColumn guibg=black
+hi CursorLineNr guifg=Yellow
+hi CursorLine guibg=black
+hi clear SignColumn
 autocmd Syntax c,cpp,vim,xml,html,xhtml,python normal zR
 
 " Airline theme.
