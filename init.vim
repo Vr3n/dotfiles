@@ -65,6 +65,10 @@ Plug 'ianks/vim-tsx'
 " typescript-vim will do all the coloring for typescript keywords
 Plug 'leafgarland/typescript-vim'
 
+" Fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() }  }
+Plug 'junegunn/fzf.vim'
+Plug 'stsewd/fzf-checkout.vim'
 
 " Javascript highlighting and syntax support.
 Plug 'pangloss/vim-javascript'
@@ -164,6 +168,9 @@ hi Folded guibg=#071524 guifg=#fff2e6
 " vimspector config.
 let g:vimspector_enable_mappings='HUMAN'
 
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8}  }
+let $FZF_DEFAULT_OPTS='--reverse'
+
 " Key remaps.
 let mapleader = " "
 
@@ -233,6 +240,9 @@ xmap <Leader>di <Plug>VimspectorBalloonEval
 
 " Git Fugitive Remaps.
 nmap <leader>gs :G<CR>
+nnoremap <leader>gb :GBranches<CR>
+nmap <leader>gf :diffget //3<CR>
+nmap <leader>gj :diffget //2<CR>
  
 " Telescope ignore file.
 lua << EOF 
