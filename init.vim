@@ -231,6 +231,9 @@ nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 " for visual mode, the visually selected text
 xmap <Leader>di <Plug>VimspectorBalloonEval
 
+" Git Fugitive Remaps.
+nmap <leader>gs :G<CR>
+ 
 " Telescope ignore file.
 lua << EOF 
 require('telescope').setup { 
