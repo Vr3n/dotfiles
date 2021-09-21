@@ -195,11 +195,34 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+" Maximizer keymaps.
+nnoremap <leader>mf :MaximizerToggle<CR>
+
 " Vimspector remps.
 " mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
 
 " for normal mode - the word under the cursor
 nmap <Leader>di <Plug>VimspectorBalloonEval
+nnoremap <Leader>dd :call vimspector#Launch()<cr>
+nnoremap <Leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
+nnoremap <Leader>dt :call GotoWindow(g:vimspector_session_windows.tabpage)<CR>
+nnoremap <Leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<CR>
+nnoremap <Leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<CR>
+nnoremap <Leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
+nnoremap <Leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
+nnoremap <Leader>de :call vimspector#Reset()<cr>
+
+nnoremap <leader>dtcb :call vimspector#CleanLineBreakpoint()<CR>
+
+nmap <leader>dl <Plug>VimspectorStepInto
+nmap <leader>dj <Plug>VimspectorStepOver
+nmap <leader>dk <Plug>VimspectorStepOut
+nmap <leader>d_ <Plug>VimspectorStepOut
+nnoremap <leader>c<space> :call vimspector#Continue()<CR>
+
+nmap <leader>drc <Plug>VimspectorRunToCursor
+nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
+nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
 " for visual mode, the visually selected text
 xmap <Leader>di <Plug>VimspectorBalloonEval
