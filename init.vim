@@ -163,7 +163,7 @@ au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 " Code folding config.
 let g:SimpylFold_docstring_preview=1
 
-hi Folded guibg=#071524 guifg=#fff2e6
+hi Folded guibg=#071524 guifg=#b51222
 
 " vimspector config.
 let g:vimspector_enable_mappings='HUMAN'
@@ -248,7 +248,7 @@ nmap <leader>gj :diffget //2<CR>
 lua << EOF 
 require('telescope').setup { 
     defaults = { 
-        file_ignore_patterns = { "node_modules" } 
+        file_ignore_patterns = { "node_modules", "__pycache__" } 
     } 
 }
 EOF 
