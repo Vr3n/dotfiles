@@ -1,3 +1,4 @@
+set encoding=UTF-8
 set exrc
 set number
 set relativenumber
@@ -32,6 +33,9 @@ call plug#begin('~/.vim/plugged')
 " afterglow colorscheme.
 Plug 'danilo-augusto/vim-afterglow'
 
+" Custom Icons for vim.
+Plug 'ryanoasis/vim-devicons'
+
 " nerdtree for file navigation.
 Plug 'preservim/nerdtree'
 
@@ -54,6 +58,9 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
+" Git gutter.
+Plug 'airblade/vim-gitgutter'
+
 " Lexima for Autoclosing parenthesis.
 Plug 'cohama/lexima.vim'
 
@@ -64,6 +71,9 @@ Plug 'ianks/vim-tsx'
 " by default, if you open tsx file, neovim does not show syntax colors
 " typescript-vim will do all the coloring for typescript keywords
 Plug 'leafgarland/typescript-vim'
+
+" DJango Plus for Django SUupport.
+Plug 'tweekmonster/django-plus.vim'
 
 " Fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() }  }
@@ -95,8 +105,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'maxmellon/vim-jsx-pretty'
 
 " Emmet.
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', { 'for': [ 'html', 'htmldjango', 'javascript.jsx' ] }
 
+" Bracey
+Plug 'turbio/bracey.vim'
 
 " Asynchronous 
 Plug 'w0rp/ale'
@@ -111,21 +123,24 @@ Plug 'vim-scripts/indentpython.vim'
 " MultiCursor Editing.
 Plug 'terryma/vim-multiple-cursors'
 
+" UltiSnips: Snippets
 call plug#end()
 " --- INSTALLING PLUGINS END --- "
 let g:python3_host_prog=expand('/usr/bin/python3')
 
 " coc extensions
 let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+let g:coc_filetypes_disable = ['htmldjango']
 
 " emmet configurations.
-let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings={
-    \ 'javascript.jsx': {
+   \ 'javascript.jsx': {
         \    'extends': 'jsx',
     \ },
-    \ }
-
+    \ 'htmldjango': {
+        \   'extends': 'html',
+    \ },
+\ }
 
 " colorscheme settings.
 set t_Co=256
@@ -145,6 +160,12 @@ let g:airline_theme='codedark'
 " Rainbow brackets config.
 let g:rainbow_active=1
 
+" Git gutter configs
+let g:gitgutter_set_sign_backgrounds = 1
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+ 
 " Transparent Background config.
 lua << EOF
 require("transparent").setup{
@@ -163,7 +184,8 @@ au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 " Code folding config.
 let g:SimpylFold_docstring_preview=1
 
-hi Folded guibg=#071524 guifg=#b51222
+hi Folded guibg=#000000 guifg=#b51222
+
 
 " vimspector config.
 let g:vimspector_enable_mappings='HUMAN'
@@ -240,10 +262,19 @@ xmap <Leader>di <Plug>VimspectorBalloonEval
 
 " Git Fugitive Remaps.
 nmap <leader>gs :G<CR>
+nnoremap <leader>gcm :G Commit<CR> 
 nnoremap <leader>gb :GBranches<CR>
 nmap <leader>gf :diffget //3<CR>
 nmap <leader>gj :diffget //2<CR>
- 
+
+" Bracey Remaps.
+nnoremap <leader>ko :Bracey<CR>
+nnoremap <leader>ks :BraceyStop<CR>
+nnoremap <leader>kr :BraceyReload<CR>
+
+" disable termination when pressing ctrl-Z
+nnoremap <C-z> <nop>
+
 " Telescope ignore file.
 lua << EOF 
 require('telescope').setup { 
