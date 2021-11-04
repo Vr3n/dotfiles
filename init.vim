@@ -263,7 +263,8 @@ xmap <Leader>di <Plug>VimspectorBalloonEval
 " Git Fugitive Remaps.
 nmap <leader>gs :G<CR>
 nnoremap <leader>gc :G commit<CR> 
-nnoremap <leader>gb :G Branches<CR>
+nnoremap <leader>gb :G branches<CR>
+nnoremap <leader>gp :G push<CR>
 nmap <leader>gf :diffget //3<CR>
 nmap <leader>gj :diffget //2<CR>
 
