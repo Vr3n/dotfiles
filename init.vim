@@ -123,7 +123,15 @@ Plug 'vim-scripts/indentpython.vim'
 " MultiCursor Editing.
 Plug 'terryma/vim-multiple-cursors'
 
-" UltiSnips: Snippets
+" ES2015 code snippets (Optional)
+Plug 'epilande/vim-es2015-snippets'
+
+" React code snippets
+Plug 'epilande/vim-react-snippets'
+
+" Ultisnips
+Plug 'SirVer/ultisnips'
+
 call plug#end()
 " --- INSTALLING PLUGINS END --- "
 let g:python3_host_prog=expand('/usr/bin/python3')
@@ -275,6 +283,9 @@ nnoremap <leader>kr :BraceyReload<CR>
 
 " disable termination when pressing ctrl-Z
 nnoremap <C-z> <nop>
+
+" Trigger configuration (Optional)
+let g:UltiSnipsExpandTrigger="<C-l>"
 
 " Telescope ignore file.
 lua << EOF 
