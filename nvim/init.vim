@@ -287,9 +287,6 @@ nnoremap <C-z> <nop>
 " Trigger configuration (Optional)
 let g:UltiSnipsExpandTrigger="<C-l>"
 
-" Pyright Language server.
-require'lspconfig'.pyright.setup{}
-
 " Telescope ignore file.
 lua << EOF 
 require('telescope').setup { 
